@@ -66,7 +66,7 @@
   }
 
   if ('undefined' === typeof exports) {
-    exports = {}
+    var exports = {}
   }
 
   exports.require = function(id, path, cb) {
