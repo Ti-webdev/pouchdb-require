@@ -1,0 +1,26 @@
+{
+  "name": "pouchdb-require",
+  "version": "1.0.0",
+  "description": "require() javascript module from PouchDB",
+  "main": "pouchdb.require.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ti-webdev/pouchdb-require.git"
+  },
+  "keywords": [
+    "pouchdb",
+    "require"
+  ],
+  "author": "Ti",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/Ti-webdev/pouchdb-require/issues"
+  },
+  "homepage": "https://github.com/Ti-webdev/pouchdb-require#readme",
+  "dependencies": {
+    "pouchdb": "^3.5.0"
+  }
+}

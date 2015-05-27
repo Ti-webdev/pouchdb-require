@@ -1,0 +1,25 @@
+{
+  "name": "pouchdb-require",
+  "version": "1.0.0",
+  "homepage": "https://github.com/Ti-webdev/pouchdb-require",
+  "authors": [
+    "Vasily Mikhaylovsky <ti.webdev@gmail.com>"
+  ],
+  "description": "require() javascript module from PouchDB",
+  "main": "pouchdb.require.js",
+  "keywords": [
+    "pouchdb",
+    "require"
+  ],
+  "license": "BSD",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "pouchdb": "~3.5.0"
+  }
+}
