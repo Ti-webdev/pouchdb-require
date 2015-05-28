@@ -14,45 +14,45 @@
       }
     }
 
-    var globals = {
-      exports: {},
-      module: {},
-      require: function(child) {
-        var parent = globals.module
-        var childArr = child.split('/')
-        var childId = ''
-        for(var i = 0; i < childArr.length; i++) {
-          var pathName = childArr[i]
-          if ('' !== childId) {
-            childId += '/'
-          }
-          switch(pathName) {
-            case '.':
-              if ('' === childId) {
-                childId = dirname(parent.id)
-              }
-              break
-            case '..':
-              if ('' === childId) {
-                childId = dirname(parent.id)
-              }
-              childId = dirname(childId)
-              break
-            default:
-              childId += pathName
-          }
-        }
-
-        return defineModule(db, doc, childId, globals.module).exports
-      }
-    }
+    globals = exports.require.globals
     globals.globals = globals
+    globals.exports = {}
+    globals.module = {}
     globals.module.id = id
     globals.module.require = globals.require
     globals.module.exports = globals.exports
     globals.module.current = globals.module
     if (parent) {
       globals.module.parent = parent
+    }
+
+    globals.require = function(child) {
+      var parent = globals.module
+      var childArr = child.split('/')
+      var childId = ''
+      for(var i = 0; i < childArr.length; i++) {
+        var pathName = childArr[i]
+        if ('' !== childId) {
+          childId += '/'
+        }
+        switch(pathName) {
+          case '.':
+            if ('' === childId) {
+              childId = dirname(parent.id)
+            }
+            break
+          case '..':
+            if ('' === childId) {
+              childId = dirname(parent.id)
+            }
+            childId = dirname(childId)
+            break
+          default:
+            childId += pathName
+        }
+      }
+
+      return defineModule(db, doc, childId, globals.module).exports
     }
 
     var keys = Object.keys(globals)
@@ -82,6 +82,8 @@
     }
     return result
   }
+
+  exports.require.globals = {}
 
   if (PouchDB) {
     PouchDB.plugin(exports)
